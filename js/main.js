@@ -1,5 +1,5 @@
 /* ===========================================================
-  Toggle Navbar Links
+    Toggle Navbar Links
 ==========================================================*/
 let toggleBtn = document.querySelector(".toggle");
 let toggleIcon = document.querySelector(".toggle i");
@@ -27,6 +27,30 @@ window.onscroll = () => {
     logo.setAttribute("src", "assets/images/sanad-logo.png");
   }
 };
+
+// ========================== Animate on Scroll ============================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      entry.target.classList.add("show-step");
+      entry.target.classList.add("show-svg");
+      entry.target.classList.add("show-text");
+      entry.target.classList.add("show-card");
+    }
+  });
+});
+const hiddenElements = document.querySelectorAll(".hidden");
+const hiddenSteps = document.querySelectorAll(".hidden-step");
+const hiddenSvgs = document.querySelectorAll(".hidden-svg");
+const hiddenTexts = document.querySelectorAll(".hidden-text");
+const hiddenCards = document.querySelectorAll(".hidden-card");
+
+hiddenElements.forEach((el) => observer.observe(el));
+hiddenSteps.forEach((el) => observer.observe(el));
+hiddenSvgs.forEach((el) => observer.observe(el));
+hiddenTexts.forEach((el) => observer.observe(el));
+hiddenCards.forEach((el) => observer.observe(el));
 
 // ========================== Invest cards controller ============================
 const prevBtn = document.querySelector(".secondary-arrow-btn");
